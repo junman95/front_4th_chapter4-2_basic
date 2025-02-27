@@ -60,4 +60,23 @@ function displayProducts(products) {
   });
 }
 
-loadProducts();
+window.onload = () => {
+  let status = 'idle';
+
+  let productSection = document.querySelector('#all-products');
+
+  window.onscroll = () => {
+    let position =
+      productSection.getBoundingClientRect().top -
+      (window.scrollY + window.innerHeight);
+
+    if (status == 'idle' && position <= 0) {
+      loadProducts();
+
+      // 아주 긴 로직 예시
+      for (let i = 0; i < 10000000; i++) {
+        const temp = Math.sqrt(i) * Math.sqrt(i);
+      }
+    }
+  };
+};
